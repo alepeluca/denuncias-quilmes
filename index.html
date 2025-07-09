@@ -1,219 +1,198 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Formulario de Reclamos</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Denuncias Quilmes</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 40px;
-    }
-    .section {
-      margin-bottom: 25px;
-    }
-    label, select, input, textarea {
-      display: block;
-      margin-bottom: 10px;
-      width: 100%;
-      max-width: 500px;
-    }
-    textarea {
-      resize: none;
-    }
-    .checkbox-group label {
-      display: inline-block;
-      margin-right: 15px;
-      margin-bottom: 5px;
-    }
-    .comentario {
-      border-top: 1px solid #ccc;
-      padding: 10px 0;
-    }
-    .success-message {
-      margin-top: 10px;
-      color: green;
-    }
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    form { max-width: 600px; margin-bottom: 40px; }
+    label { display: block; margin-top: 10px; }
+    input, select, textarea { width: 100%; padding: 8px; margin-top: 4px; box-sizing: border-box; }
+    textarea { resize: none; height: 80px; }
+    button { margin-top: 15px; padding: 10px 20px; font-size: 16px; cursor: pointer; }
+    .success-message { color: green; margin-top: 15px; }
+    .error-message { color: red; margin-top: 15px; }
+    .comentario { border-bottom: 1px solid #ccc; padding: 10px 0; }
+    .comentario p { margin: 4px 0; }
   </style>
 </head>
 <body>
-
+  <h1>¡Contanos tu experiencia!</h1>
   <form id="registro-form">
-    <h2>¡Contanos tu experiencia!</h2>
-    <p>Al enviar este formulario, confirmás que tu comentario podrá ser publicado.</p>
+    <label for="nombre">Nombre completo</label>
+    <input type="text" id="nombre" name="nombre" placeholder="Prefiero no decirlo" />
 
-    <div class="section">
-      <h3>Datos personales</h3>
-      <label>Nombre completo</label>
-      <input name="nombre" type="text" placeholder="Prefiero no decirlo">
+    <label for="sexo">Sexo</label>
+    <select id="sexo" name="sexo">
+      <option value="Prefiero no decirlo">Prefiero no decirlo</option>
+      <option value="Hombre">Hombre</option>
+      <option value="Mujer">Mujer</option>
+    </select>
 
-      <label>Sexo</label>
-      <select name="sexo">
-        <option>Prefiero no decirlo</option>
-        <option>Hombre</option>
-        <option>Mujer</option>
-      </select>
+    <label for="edad">Edad</label>
+    <select id="edad" name="edad">
+      <option value="Prefiero no decirlo">Prefiero no decirlo</option>
+      <option value="18–25">18–25</option>
+      <option value="26–35">26–35</option>
+      <option value="36–45">36–45</option>
+      <option value="46–55">46–55</option>
+      <option value="56+">56+</option>
+    </select>
 
-      <label>Edad</label>
-      <select name="edad">
-        <option>Prefiero no decirlo</option>
-        <option>18–25</option>
-        <option>26–35</option>
-        <option>36–45</option>
-        <option>46–55</option>
-        <option>56+</option>
-      </select>
+    <label for="telefono">Teléfono</label>
+    <input type="text" id="telefono" name="telefono" placeholder="Prefiero no decirlo" />
 
-      <label>Teléfono</label>
-      <input name="telefono" type="text" placeholder="Prefiero no decirlo">
+    <label for="email">Correo electrónico</label>
+    <input type="email" id="email" name="email" placeholder="Prefiero no decirlo" />
 
-      <label>Correo electrónico</label>
-      <input name="email" type="email" placeholder="Prefiero no decirlo">
-    </div>
+    <label for="antiguedad">Antigüedad en el puesto</label>
+    <select id="antiguedad" name="antiguedad">
+      <option value="Prefiero no decirlo">Prefiero no decirlo</option>
+      <option value="0–1">0–1</option>
+      <option value="2–5">2–5</option>
+      <option value="6–10">6–10</option>
+      <option value="11–20">11–20</option>
+      <option value="21+">21+</option>
+    </select>
 
-    <div class="section">
-      <h3>Datos laborales</h3>
+    <label for="sindicato">Sindicato afiliado</label>
+    <select id="sindicato" name="sindicato">
+      <option value="Prefiero no decirlo">Prefiero no decirlo</option>
+      <option value="STQM">STQM</option>
+      <option value="ATE">ATE</option>
+      <option value="SOEMQUI">SOEMQUI</option>
+      <option value="MUTUAL BRANDSEN">MUTUAL BRANDSEN</option>
+    </select>
 
-      <label>Antigüedad en el puesto</label>
-      <select name="antiguedad">
-        <option>Prefiero no decirlo</option>
-        <option>0–1</option>
-        <option>2–5</option>
-        <option>6–10</option>
-        <option>11–20</option>
-        <option>21+</option>
-      </select>
+    <label><input type="checkbox" id="sindicato_no_resuelve" name="sindicato_no_resuelve" value="Sí" /> El sindicato no me resuelve los problemas</label>
 
-      <label>Sindicato afiliado</label>
-      <select name="sindicato">
-        <option>Prefiero no decirlo</option>
-        <option>STQM</option>
-        <option>ATE</option>
-        <option>SOEMQUI</option>
-        <option>MUTUAL BRANDSEN</option>
-      </select>
+    <label for="secretaria">Secretaría donde trabaja *</label>
+    <select id="secretaria" name="secretaria" required>
+      <option value="">Seleccione una secretaría</option>
+      <option>Jefatura de Gabinete</option>
+      <option>Secretaría de Hacienda</option>
+      <option>Secretaría Legal y Técnica</option>
+      <option>Secretaría de Salud</option>
+      <option>Secretaría de Niñez y Desarrollo Social</option>
+      <option>Secretaría de Participación Ciudadana</option>
+      <option>Secretaría de Ambiente y G.I.R.S.U</option>
+      <option>Secretaría de Comunicación y Relaciones Institucionales</option>
+      <option>Secretaría de Mujeres, Diversidades y DDHH</option>
+      <option>Secretaría de Educación, Culturas y Deportes</option>
+      <option>Secretaría de Desarrollo Urbano y Obra Pública</option>
+      <option>Secretaría de Servicios Públicos</option>
+      <option>Secretaría de Seguridad</option>
+      <option>Agencia de Fiscalización, Control Comunal y Desarrollo Económico</option>
+    </select>
 
-      <label><input type="checkbox" name="sindicato_no_resuelve" value="Sí"> El sindicato no me resuelve los problemas</label>
+    <fieldset style="margin-top: 15px;">
+      <legend>Situaciones sufridas (marcá todas las que apliquen)</legend>
+      <label><input type="checkbox" name="situaciones" value="Maltratos" /> Maltratos</label><br />
+      <label><input type="checkbox" name="situaciones" value="Abuso de poder" /> Abuso de poder</label><br />
+      <label><input type="checkbox" name="situaciones" value="Obligación de ir a marchas" /> Obligación de ir a marchas</label><br />
+      <label><input type="checkbox" name="situaciones" value="Recategorizaciones arbitrarias" /> Recategorizaciones arbitrarias</label><br />
+      <label><input type="checkbox" name="situaciones" value="Directivos puestos a dedo" /> Directivos puestos a dedo</label><br />
+      <label><input type="checkbox" name="situaciones" value="Discriminación con horas extra" /> Discriminación con horas extra</label><br />
+      <label><input type="checkbox" name="situaciones" value="Falta de insumos" /> Falta de insumos</label><br />
+      <label><input type="checkbox" name="situaciones" value="Falta de indumentaria" /> Falta de indumentaria</label><br />
+      <label><input type="checkbox" name="situaciones" value="Presión política interna" /> Presión política interna</label><br />
+      <label><input type="checkbox" name="situaciones" value="Amenazas si se denuncia" /> Amenazas si se denuncia</label><br />
+      <label><input type="checkbox" name="situaciones" value="Obstáculos para licencias" /> Obstáculos para licencias</label><br />
+      <label><input type="checkbox" name="situaciones" value="Acoso o comentarios inapropiados" /> Acoso o comentarios inapropiados</label><br />
+      <label><input type="checkbox" name="situaciones" value="Otro" /> Otro (aclarar en el comentario)</label><br />
+    </fieldset>
 
-      <label>Secretaría donde trabaja *</label>
-      <select name="secretaria" required>
-        <option value="">Seleccione una secretaría</option>
-        <option>Jefatura de Gabinete</option>
-        <option>Secretaría de Hacienda</option>
-        <option>Secretaría Legal y Técnica</option>
-        <option>Secretaría de Salud</option>
-        <option>Secretaría de Niñez y Desarrollo Social</option>
-        <option>Secretaría de Participación Ciudadana</option>
-        <option>Secretaría de Ambiente y G.I.R.S.U</option>
-        <option>Secretaría de Comunicación y Relaciones Institucionales</option>
-        <option>Secretaría de Mujeres, Diversidades y DDHH</option>
-        <option>Secretaría de Educación, Culturas y Deportes</option>
-        <option>Secretaría de Desarrollo Urbano y Obra Pública</option>
-        <option>Secretaría de Servicios Públicos</option>
-        <option>Secretaría de Seguridad</option>
-        <option>Agencia de Fiscalización, Control Comunal y Desarrollo Económico</option>
-      </select>
-    </div>
-
-    <div class="section">
-      <h3>Situaciones sufridas</h3>
-      <p>Marcá todas las que hayas experimentado.</p>
-      <div class="checkbox-group">
-        <label><input name="situaciones" type="checkbox" value="Maltratos"> Maltratos</label>
-        <label><input name="situaciones" type="checkbox" value="Abuso de poder"> Abuso de poder</label>
-        <label><input name="situaciones" type="checkbox" value="Obligación de ir a marchas"> Obligación de ir a marchas</label>
-        <label><input name="situaciones" type="checkbox" value="Recategorizaciones arbitrarias"> Recategorizaciones arbitrarias</label>
-        <label><input name="situaciones" type="checkbox" value="Directivos puestos a dedo"> Directivos puestos a dedo</label>
-        <label><input name="situaciones" type="checkbox" value="Discriminación con horas extra"> Discriminación con horas extra</label>
-        <label><input name="situaciones" type="checkbox" value="Falta de insumos"> Falta de insumos</label>
-        <label><input name="situaciones" type="checkbox" value="Falta de indumentaria"> Falta de indumentaria</label>
-        <label><input name="situaciones" type="checkbox" value="Presión política interna"> Presión política interna</label>
-        <label><input name="situaciones" type="checkbox" value="Amenazas si se denuncia"> Amenazas si se denuncia</label>
-        <label><input name="situaciones" type="checkbox" value="Obstáculos para licencias"> Obstáculos para licencias</label>
-        <label><input name="situaciones" type="checkbox" value="Acoso o comentarios inapropiados"> Acoso o comentarios inapropiados</label>
-        <label><input name="situaciones" type="checkbox" value="Otro"> Otro (aclarar en el comentario)</label>
-      </div>
-    </div>
-
-    <div class="section">
-      <h3>Comentario final *</h3>
-      <label>Comentario</label>
-      <textarea name="comentario" rows="5" required style="width: 100%; max-width: 500px; height: 100px;"></textarea>
-    </div>
-
-    <!-- CAPTCHA desactivado por ahora -->
-    <!-- <div class="g-recaptcha" data-sitekey="TU_SITE_KEY"></div> -->
+    <label for="comentario" style="margin-top:15px;">Comentario final *</label>
+    <textarea id="comentario" name="comentario" required></textarea>
 
     <button type="submit">Enviar</button>
     <div id="mensaje" class="success-message"></div>
   </form>
 
-  <hr>
+  <hr />
 
-  <h3>Comentarios publicados</h3>
+  <h2>Comentarios publicados</h2>
   <div id="comentarios-list"></div>
 
   <script>
-    const webAppUrl = 'https://script.google.com/macros/s/AKfycbxcbMO8JYtNR5YKDv6-9NWe8zvQR1xidmPlEmS_nXJuMLh3P1VD0JoJG6J3Gdy90tK9eg/exec';
+    const webAppUrl = 'https://denuncias-quilmes.vercel.app/api/agregar';
+    const listarUrl = 'https://denuncias-quilmes.vercel.app/api/listar';
 
-    document.getElementById('registro-form').addEventListener('submit', async function (e) {
+    document.getElementById('registro-form').addEventListener('submit', async (e) => {
       e.preventDefault();
-      const form = e.target;
-      const formData = new FormData(form);
-      const data = {};
 
-      formData.forEach((value, key) => {
-        if (data[key]) {
-          if (!Array.isArray(data[key])) data[key] = [data[key]];
-          data[key].push(value);
-        } else {
-          data[key] = value;
-        }
-      });
+      const form = e.target;
+      const datos = {
+        nombre: form.nombre.value || '',
+        sexo: form.sexo.value || '',
+        edad: form.edad.value || '',
+        telefono: form.telefono.value || '',
+        email: form.email.value || '',
+        antiguedad: form.antiguedad.value || '',
+        sindicato: form.sindicato.value || '',
+        sindicato_no_resuelve: form.sindicato_no_resuelve.checked ? 'Sí' : '',
+        secretaria: form.secretaria.value || '',
+        situaciones: Array.from(form.querySelectorAll('input[name="situaciones"]:checked')).map(i => i.value).join(', '),
+        comentario: form.comentario.value.trim()
+      };
+
+      if (!datos.secretaria) {
+        alert('Por favor seleccioná la Secretaría donde trabajás.');
+        return;
+      }
+      if (!datos.comentario) {
+        alert('Por favor escribí un comentario.');
+        return;
+      }
 
       try {
         const response = await fetch(webAppUrl, {
           method: 'POST',
-          body: JSON.stringify(data),
-          headers: { 'Content-Type': 'application/json' }
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(datos)
         });
-        const text = await response.text();
 
-        document.getElementById('mensaje').textContent = text === 'OK'
-          ? 'Formulario enviado con éxito.'
-          : 'Error: ' + text;
+        const result = await response.json();
 
-        if (text === 'OK') {
+        if (response.ok) {
+          document.getElementById('mensaje').textContent = 'Gracias por tu aporte.';
           form.reset();
           cargarComentarios();
+        } else {
+          document.getElementById('mensaje').textContent = 'Error al enviar: ' + (result.error || 'Intenta de nuevo.');
         }
-
       } catch (error) {
-        document.getElementById('mensaje').textContent = 'Error al enviar: ' + error;
+        document.getElementById('mensaje').textContent = 'Error al enviar: ' + error.message;
       }
     });
 
     async function cargarComentarios() {
       try {
-        const response = await fetch(webAppUrl);
-        const comentarios = await response.json();
-        const comentariosList = document.getElementById('comentarios-list');
-        comentariosList.innerHTML = '';
+        const res = await fetch(listarUrl);
+        const comentarios = await res.json();
 
-        comentarios.reverse().forEach(c => {
+        const container = document.getElementById('comentarios-list');
+        container.innerHTML = '';
+
+        comentarios.forEach(c => {
           const div = document.createElement('div');
           div.className = 'comentario';
+
           div.innerHTML = `
-            <small><b>${c.nombre || 'Anónimo'}</b> (${c.secretaria})</small><br/>
+            <p><strong>${c.nombre || 'Anónimo'}</strong> (${new Date(c.fecha).toLocaleString()})</p>
             <p>${c.comentario}</p>
+            <hr />
           `;
-          comentariosList.appendChild(div);
+
+          container.appendChild(div);
         });
-      } catch (err) {
-        console.error('Error al cargar comentarios:', err);
+      } catch {
+        document.getElementById('comentarios-list').textContent = 'No se pudieron cargar los comentarios.';
       }
     }
 
-    cargarComentarios();
+    window.onload = cargarComentarios;
   </script>
 </body>
 </html>
