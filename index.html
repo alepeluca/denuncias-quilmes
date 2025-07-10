@@ -5,223 +5,53 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Denuncias Quilmes</title>
   <style>
-    body { font-family: Arial, sans-serif; margin: 20px; }
-    form { max-width: 600px; margin-bottom: 40px; }
-    label { display: block; margin-top: 10px; }
-    input, select, textarea { width: 100%; padding: 8px; margin-top: 4px; box-sizing: border-box; }
-    textarea { resize: none; height: 80px; }
-    button { margin-top: 15px; padding: 10px 20px; font-size: 16px; cursor: pointer; }
-    .success-message { color: green; margin-top: 15px; }
-    .error-message { color: red; margin-top: 15px; }
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+    iframe { width: 100%; height: 600px; border: none; }
+    #comentarios-container { padding: 20px; max-width: 800px; margin: auto; }
     .comentario { border-bottom: 1px solid #ccc; padding: 10px 0; }
-    .comentario p { margin: 4px 0; }
-    #version { text-align: center; color: #666; margin-top: 40px; font-size: 14px; }
+    .comentario p { margin: 5px 0; }
+    #version { text-align: center; color: #666; margin: 20px 0; font-size: 14px; }
   </style>
 </head>
 <body>
-  <h1>¡Contanos tu experiencia!</h1>
-  <form id="registro-form">
-    <label for="nombre">Nombre completo</label>
-    <input type="text" id="nombre" name="nombre" placeholder="Prefiero no decirlo" />
 
-    <label for="sexo">Sexo</label>
-    <select id="sexo" name="sexo">
-      <option value="Prefiero no decirlo">Prefiero no decirlo</option>
-      <option value="Hombre">Hombre</option>
-      <option value="Mujer">Mujer</option>
-    </select>
+  <!-- Formulario embebido -->
+  <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdtaHSBmIyFJsGV0Wtq16TJcnOZafFF3_eqLhE5WNSpdzZ_oQ/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Cargando…</iframe>
 
-    <label for="edad">Edad</label>
-    <select id="edad" name="edad">
-      <option value="Prefiero no decirlo">Prefiero no decirlo</option>
-      <option value="18–25">18–25</option>
-      <option value="26–35">26–35</option>
-      <option value="36–45">36–45</option>
-      <option value="46–55">46–55</option>
-      <option value="56+">56+</option>
-    </select>
+  <!-- Comentarios -->
+  <div id="comentarios-container">
+    <h2>Comentarios publicados</h2>
+    <div id="comentarios-list">Cargando comentarios...</div>
+  </div>
 
-    <label for="telefono">Teléfono</label>
-    <input type="text" id="telefono" name="telefono" placeholder="Prefiero no decirlo" />
-
-    <label for="email">Correo electrónico</label>
-    <input type="email" id="email" name="email" placeholder="Prefiero no decirlo" />
-
-    <label for="antiguedad">Antigüedad en el puesto</label>
-    <select id="antiguedad" name="antiguedad">
-      <option value="Prefiero no decirlo">Prefiero no decirlo</option>
-      <option value="0–1">0–1</option>
-      <option value="2–5">2–5</option>
-      <option value="6–10">6–10</option>
-      <option value="11–20">11–20</option>
-      <option value="21+">21+</option>
-    </select>
-
-    <label for="sindicato">Sindicato afiliado</label>
-    <select id="sindicato" name="sindicato">
-      <option value="Prefiero no decirlo">Prefiero no decirlo</option>
-      <option value="STQM">STQM</option>
-      <option value="ATE">ATE</option>
-      <option value="SOEMQUI">SOEMQUI</option>
-      <option value="MUTUAL BRANDSEN">MUTUAL BRANDSEN</option>
-    </select>
-
-    <label><input type="checkbox" id="sindicato_no_resuelve" name="sindicato_no_resuelve" value="Sí" /> El sindicato no me resuelve los problemas</label>
-
-    <label for="secretaria">Secretaría donde trabaja *</label>
-    <select id="secretaria" name="secretaria" required>
-      <option value="">Seleccione una secretaría</option>
-      <option>Jefatura de Gabinete</option>
-      <option>Secretaría de Hacienda</option>
-      <option>Secretaría Legal y Técnica</option>
-      <option>Secretaría de Salud</option>
-      <option>Secretaría de Niñez y Desarrollo Social</option>
-      <option>Secretaría de Participación Ciudadana</option>
-      <option>Secretaría de Ambiente y G.I.R.S.U</option>
-      <option>Secretaría de Comunicación y Relaciones Institucionales</option>
-      <option>Secretaría de Mujeres, Diversidades y DDHH</option>
-      <option>Secretaría de Educación, Culturas y Deportes</option>
-      <option>Secretaría de Desarrollo Urbano y Obra Pública</option>
-      <option>Secretaría de Servicios Públicos</option>
-      <option>Secretaría de Seguridad</option>
-      <option>Agencia de Fiscalización, Control Comunal y Desarrollo Económico</option>
-    </select>
-
-    <fieldset style="margin-top: 15px;">
-      <legend>Situaciones sufridas (marcá todas las que apliquen)</legend>
-      <label><input type="checkbox" name="situaciones" value="Maltratos" /> Maltratos</label><br />
-      <label><input type="checkbox" name="situaciones" value="Abuso de poder" /> Abuso de poder</label><br />
-      <label><input type="checkbox" name="situaciones" value="Obligación de ir a marchas" /> Obligación de ir a marchas</label><br />
-      <label><input type="checkbox" name="situaciones" value="Recategorizaciones arbitrarias" /> Recategorizaciones arbitrarias</label><br />
-      <label><input type="checkbox" name="situaciones" value="Directivos puestos a dedo" /> Directivos puestos a dedo</label><br />
-      <label><input type="checkbox" name="situaciones" value="Discriminación con horas extra" /> Discriminación con horas extra</label><br />
-      <label><input type="checkbox" name="situaciones" value="Falta de insumos" /> Falta de insumos</label><br />
-      <label><input type="checkbox" name="situaciones" value="Falta de indumentaria" /> Falta de indumentaria</label><br />
-      <label><input type="checkbox" name="situaciones" value="Presión política interna" /> Presión política interna</label><br />
-      <label><input type="checkbox" name="situaciones" value="Amenazas si se denuncia" /> Amenazas si se denuncia</label><br />
-      <label><input type="checkbox" name="situaciones" value="Obstáculos para licencias" /> Obstáculos para licencias</label><br />
-      <label><input type="checkbox" name="situaciones" value="Acoso o comentarios inapropiados" /> Acoso o comentarios inapropiados</label><br />
-      <label><input type="checkbox" name="situaciones" value="Otro" /> Otro (aclarar en el comentario)</label><br />
-    </fieldset>
-
-    <label for="comentario" style="margin-top:15px;">Comentario final *</label>
-    <textarea id="comentario" name="comentario" required></textarea>
-
-    <button type="submit">Enviar</button>
-    <div id="mensaje" class="success-message"></div>
-  </form>
-
-  <hr />
-
-  <h2>Comentarios publicados</h2>
-  <div id="comentarios-list"></div>
-
-  <div id="version">V0.0.5</div>
+  <div id="version">V0.1 - Formulario embebido + comentarios desde Drive</div>
 
   <script>
-    const webAppUrl = 'https://denuncias-quilmes.vercel.app/api/agregar';
-    const listarUrl = 'https://denuncias-quilmes.vercel.app/api/listar';
+    const URL_JSON = 'https://drive.google.com/uc?export=download&id=1jGasG8W4R1nckJTeCn0xesBVoa3_AyWN';
 
-    document.getElementById('registro-form').addEventListener('submit', async (e) => {
-      e.preventDefault();
-
-      const form = e.target;
-      const datos = {
-        nombre: form.nombre.value || '',
-        sexo: form.sexo.value || '',
-        edad: form.edad.value || '',
-        telefono: form.telefono.value || '',
-        email: form.email.value || '',
-        antiguedad: form.antiguedad.value || '',
-        sindicato: form.sindicato.value || '',
-        sindicato_no_resuelve: form.sindicato_no_resuelve.checked ? 'Sí' : '',
-        secretaria: form.secretaria.value || '',
-        situaciones: Array.from(form.querySelectorAll('input[name="situaciones"]:checked')).map(i => i.value).join(', '),
-        comentario: form.comentario.value.trim()
-      };
-
-      if (!datos.secretaria) {
-        alert('Por favor seleccioná la Secretaría donde trabajás.');
-        return;
-      }
-      if (!datos.comentario) {
-        alert('Por favor escribí un comentario.');
-        return;
-      }
-
-      try {
-        const response = await fetch(webAppUrl, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(datos)
-        });
-
-        const result = await response.json();
-
-        if (response.ok) {
-          document.getElementById('mensaje').textContent = 'Gracias por tu aporte.';
-          form.reset();
-          cargarComentarios();
-        } else {
-          document.getElementById('mensaje').textContent = 'Error al enviar: ' + (result.error || 'Intenta de nuevo.');
-        }
-      } catch (error) {
-        document.getElementById('mensaje').textContent = 'Error al enviar: ' + error.message;
-      }
-    });
-
-    async function cargarComentarios() {
-      try {
-        const res = await fetch(listarUrl);
-        const comentarios = await res.json();
-
-        const container = document.getElementById('comentarios-list');
-        container.innerHTML = '';
-
-        comentarios.forEach(c => {
-          const div = document.createElement('div');
-          div.className = 'comentario';
-
-          div.innerHTML = `
-            <p><strong>${c.nombre || 'Anónimo'}</strong> (${new Date(c.fecha).toLocaleString()})</p>
-            <p>${c.comentario}</p>
-            <hr />
-          `;
-
-          container.appendChild(div);
-        });
-      } catch {
-        document.getElementById('comentarios-list').textContent = 'No se pudieron cargar los comentarios.';
-      }
-    }
-
-    window.onload = cargarComentarios;
-  </script>
-  <script>
-    const URL_JSON = 'https://drive.google.com/uc?export=download&id=1jGasG8W4R1nckJTeCn0xesBVoa3_AyWN'; // ← pegá acá tu ID
-  
     fetch(URL_JSON)
       .then(res => res.json())
       .then(data => {
         const container = document.getElementById('comentarios-list');
-        if (!data.length) {
+        container.innerHTML = '';
+
+        if (!Array.isArray(data) || data.length === 0) {
           container.innerHTML = '<p>No hay comentarios aún.</p>';
           return;
         }
-  
+
         data.forEach(entry => {
           const div = document.createElement('div');
           div.className = 'comentario';
           div.innerHTML = `
-            <strong>${entry["SECRETARÍA que DEPENDES"] || "Sin secretaría"}</strong><br>
-            <em>${entry["Contanos tu vivencia"] || "Sin comentario"}</em>
-            <hr>
+            <p><strong>${entry["SECRETARÍA que DEPENDES"] || "Sin Secretaría"}</strong></p>
+            <p>${entry["Contanos tu vivencia"] || "Sin comentario"}</p>
           `;
           container.appendChild(div);
         });
       })
       .catch(err => {
-        console.error('Error cargando comentarios:', err);
+        console.error('Error al cargar los comentarios:', err);
         document.getElementById('comentarios-list').innerText = 'No se pudieron cargar los comentarios.';
       });
   </script>
