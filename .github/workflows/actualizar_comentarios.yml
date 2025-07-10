@@ -1,0 +1,33 @@
+name: Actualizar comentarios desde Google Drive
+
+on:
+  schedule:
+    - cron: '*/10 * * * *'  # cada 10 minutos
+  workflow_dispatch:        # permite ejecutarlo a mano también
+
+jobs:
+  actualizar-json:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clonar el repositorio
+        uses: actions/checkout@v3
+
+      - name: Descargar JSON desde Google Drive
+        run: |
+          mkdir -p data
+          curl -L "https://drive.google.com/uc?export=download&id=1IzOv53TUrZSrGxV8MSh3fLLxEIWRaC69" -o data/comentarios.json
+
+      - name: Configurar Git
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+
+      - name: Hacer commit si hay cambios
+        run: |
+          if git diff --quiet; then
+            echo "No hay cambios, no se hace commit."
+          else
+            git add data/comentarios.json
+            git commit -m "Actualización automática de comentarios.json"
+            git push
+          fi
