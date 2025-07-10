@@ -15,7 +15,7 @@ jobs:
       - name: Descargar JSON desde Google Drive
         run: |
           mkdir -p data
-          curl -L "https://drive.google.com/uc?export=download&id=1IzOv53TUrZSrGxV8MSh3fLLxEIWRaC69" -o data/comentarios.json
+          curl -L "https://drive.google.com/uc?export=download&id=1WqobY1bIec1IqHE0vHXzYeFES9_k6mOJ" -o data/comentarios.json
 
       - name: Configurar Git
         run: |
